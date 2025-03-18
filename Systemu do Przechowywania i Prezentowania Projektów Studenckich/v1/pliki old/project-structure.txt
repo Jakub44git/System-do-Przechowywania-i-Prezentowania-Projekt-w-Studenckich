@@ -1,0 +1,28 @@
+student-projects-manager/
+├── frontend/            # Aplikacja Vue.js
+│   ├── public/          # Statyczne pliki
+│   └── src/             # Kod źródłowy frontendu
+│       ├── assets/      # Obrazy, fonty, itp.
+│       ├── components/  # Komponenty Vue
+│       ├── layouts/     # Układy stron
+│       ├── router/      # Konfiguracja Vue Router
+│       ├── stores/      # Zarządzanie stanem (Pinia)
+│       ├── views/       # Widoki główne
+│       ├── plugins/     # Wtyczki Vue
+│       ├── services/    # Serwisy API i abstrakcje
+│       └── utils/       # Narzędzia i funkcje pomocnicze
+├── backend/             # Serwer NestJS
+│   ├── src/             # Kod źródłowy backendu
+│   │   ├── auth/        # Moduł autoryzacji
+│   │   ├── users/       # Moduł użytkowników
+│   │   ├── projects/    # Moduł projektów
+│   │   ├── categories/  # Moduł kategorii
+│   │   ├── admin/       # Moduł administracyjny
+│   │   ├── common/      # Wspólne elementy
+│   │   └── config/      # Konfiguracja
+│   └── prisma/          # Schemat i migracje Prisma
+├── docker/              # Konfiguracja Docker
+│   ├── frontend/        # Konfiguracja Docker dla frontendu
+│   ├── backend/         # Konfiguracja Docker dla backendu
+│   └── db/              # Konfiguracja Docker dla bazy danych
+└── docs/                # Dokumentacja projektu

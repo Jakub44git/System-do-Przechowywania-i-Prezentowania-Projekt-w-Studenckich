@@ -1,0 +1,328 @@
+# Szczegółowy opis plików projektu
+
+Poniżej znajduje się szczegółowy opis każdego pliku w projekcie systemu zarządzania projektami studenckimi, pogrupowany według modułów i funkcjonalności.
+
+## Frontend (Vue.js + Tailwind CSS)
+
+### Konfiguracja projektu
+
+#### frontend/package.json
+**Cel**: Zarządzanie zależnościami projektu frontendowego
+**Opis**: Zawiera listę wszystkich bibliotek i narzędzi potrzebnych do działania aplikacji Vue.js, w tym Vue 3, Vue Router, Pinia, Tailwind CSS i inne. Definiuje również skrypty do uruchamiania, budowania i testowania aplikacji.
+**Rola**: Krytyczna - bez tego pliku npm/yarn nie będzie w stanie zainstalować zależności projektu.
+
+#### frontend/vite.config.js
+**Cel**: Konfiguracja narzędzia do budowania (Vite)
+**Opis**: Zawiera ustawienia dla Vite, nowoczesnego narzędzia do budowania aplikacji frontendowych. Konfiguruje aliasy ścieżek, wtyczki, ustawienia serwera deweloperskiego i inne opcje budowania.
+**Rola**: Istotna - określa jak aplikacja jest budowana, serwowana i optymalizowana.
+
+#### frontend/tailwind.config.js
+**Cel**: Dostosowanie frameworka CSS (Tailwind)
+**Opis**: Zawiera konfigurację Tailwind CSS, w tym niestandardowe kolory, czcionki, odstępy, cienie i inne elementy stylizacji. Definiuje również wtyczki Tailwind i ścieżki do plików, które będą używać klas Tailwind.
+**Rola**: Istotna - zapewnia spójny wygląd i możliwość kastomizacji UI.
+
+#### frontend/.env
+**Cel**: Zmienne środowiskowe dla frontendu
+**Opis**: Przechowuje zmienne specyficzne dla środowiska, takie jak URL API, tryb działania (deweloperski, produkcyjny), flagi funkcji i inne ustawienia konfiguracyjne.
+**Rola**: Istotna - umożliwia zmianę konfiguracji bez modyfikacji kodu źródłowego.
+
+#### frontend/index.html
+**Cel**: Główny plik HTML aplikacji
+**Opis**: Zawiera podstawową strukturę HTML, w której zostanie osadzona aplikacja Vue.js. Może zawierać linki do zewnętrznych zasobów, meta tagi oraz bazowy div dla montowania aplikacji.
+**Rola**: Krytyczna - punkt wejścia dla aplikacji w przeglądarce.
+
+#### frontend/tsconfig.json
+**Cel**: Konfiguracja TypeScript
+**Opis**: Definiuje opcje kompilatora TypeScript, w tym ścieżki aliasów, poziom ścisłości typów, obsługiwane wersje ECMAScript i inne ustawienia kompilacji.
+**Rola**: Istotna (jeśli używasz TypeScript) - zapewnia prawidłową kontrolę typów i kompilację.
+
+### Struktura aplikacji
+
+#### frontend/src/main.js
+**Cel**: Punkt wejścia aplikacji Vue.js
+**Opis**: Inicjalizuje instancję Vue, rejestruje wtyczki (Router, Pinia, itp.), ustawia globalne komponenty i inne konfiguracje aplikacji.
+**Rola**: Krytyczna - bez tego pliku aplikacja nie uruchomi się.
+
+#### frontend/src/App.vue
+**Cel**: Główny komponent aplikacji
+**Opis**: Zawiera bazowy układ aplikacji, w którym osadzone są wszystkie inne widoki. Zwykle zawiera stałe elementy interfejsu (np. nawigację, stopkę) i router-view dla dynamicznej zawartości.
+**Rola**: Krytyczna - korzeń drzewa komponentów Vue.
+
+#### frontend/src/router/index.js
+**Cel**: Konfiguracja routingu
+**Opis**: Definiuje wszystkie ścieżki aplikacji, mapując URL na odpowiednie komponenty widoku. Może zawierać również ochronę tras (guards), meta dane i parametry tras.
+**Rola**: Krytyczna - obsługuje nawigację w aplikacji jednostronicowej (SPA).
+
+#### frontend/src/store/index.js
+**Cel**: Konfiguracja zarządzania stanem (Pinia)
+**Opis**: Centralizuje i konfiguruje magazyny stanu aplikacji. Importuje i rejestruje poszczególne moduły store'a (auth, projects, itp.).
+**Rola**: Istotna - zapewnia spójne zarządzanie stanem aplikacji.
+
+### Komponenty
+
+#### frontend/src/components/layout/Navbar.vue
+**Cel**: Górny pasek nawigacyjny
+**Opis**: Wyświetla logo, menu nawigacyjne, wyszukiwarkę i opcje użytkownika. Reaguje na stan autoryzacji (wyświetlając odpowiednie opcje dla zalogowanych/niezalogowanych użytkowników).
+**Rola**: Istotna - główny element nawigacyjny aplikacji.
+
+#### frontend/src/components/layout/Footer.vue
+**Cel**: Stopka strony
+**Opis**: Wyświetla informacje o prawach autorskich, linki pomocnicze i dodatkowe informacje o aplikacji lub uczelni.
+**Rola**: Pomocnicza - element informacyjny.
+
+#### frontend/src/components/layout/Sidebar.vue
+**Cel**: Boczne menu nawigacyjne
+**Opis**: Zapewnia dodatkową nawigację, zwykle kontekstową do aktualnego widoku (np. filtry projektów, nawigacja w panelu administratora).
+**Rola**: Opcjonalna - używana w bardziej złożonych widokach.
+
+#### frontend/src/components/common/Button.vue
+**Cel**: Komponent przycisku
+**Opis**: Uniwersalny komponent przycisku z różnymi wariantami (podstawowy, główny, sukces, ostrzeżenie, niebezpieczeństwo) i stanami (ładowanie, wyłączony).
+**Rola**: Istotna - zapewnia spójność i re-używalność elementów interakcji.
+
+#### frontend/src/components/common/Card.vue
+**Cel**: Komponent karty
+**Opis**: Uniwersalny kontener do wyświetlania zgrupowanych informacji, z nagłówkiem, treścią i opcjonalnymi akcjami.
+**Rola**: Istotna - podstawowy element wyświetlania danych.
+
+#### frontend/src/components/projects/ProjectList.vue
+**Cel**: Lista projektów
+**Opis**: Wyświetla listę projektów z możliwością filtrowania, sortowania i paginacji. Używany w widoku głównym i panelach użytkowników.
+**Rola**: Krytyczna - główny element wyświetlania projektów.
+
+#### frontend/src/components/projects/ProjectCard.vue
+**Cel**: Karta pojedynczego projektu
+**Opis**: Komponent wyświetlający podstawowe informacje o projekcie w formie karty (tytuł, opis, autor, kategoria, status). Używany w komponentach listowych.
+**Rola**: Istotna - reprezentacja wizualna projektu.
+
+#### frontend/src/components/projects/ProjectForm.vue
+**Cel**: Formularz projektu
+**Opis**: Formularz do tworzenia i edycji projektów z walidacją pól, uploadem plików i podglądem. Używany w widokach tworzenia i edycji.
+**Rola**: Krytyczna - umożliwia studentom wysyłanie projektów.
+
+### Widoki (strony)
+
+#### frontend/src/views/HomeView.vue
+**Cel**: Strona główna
+**Opis**: Wyświetla przegląd systemu, najnowsze lub wyróżnione projekty, wyszukiwarkę i informacje powitalne.
+**Rola**: Istotna - punkt wejścia dla użytkowników.
+
+#### frontend/src/views/ProjectsView.vue
+**Cel**: Lista projektów
+**Opis**: Strona wyświetlająca pełną listę projektów z zaawansowanymi opcjami filtrowania i wyszukiwania.
+**Rola**: Krytyczna - główny widok przeglądu projektów.
+
+#### frontend/src/views/ProjectDetailsView.vue
+**Cel**: Szczegóły projektu
+**Opis**: Strona wyświetlająca pełne informacje o projekcie, w tym opis, załączniki, metadane, komentarze i akcje specyficzne dla roli użytkownika.
+**Rola**: Krytyczna - umożliwia przeglądanie projektu.
+
+#### frontend/src/views/UserDashboardView.vue
+**Cel**: Panel użytkownika
+**Opis**: Panel zarządzania dla studenta, wyświetlający jego projekty, statusy i umożliwiający tworzenie nowych.
+**Rola**: Istotna - centralne miejsce dla studentów.
+
+#### frontend/src/views/TeacherDashboardView.vue
+**Cel**: Panel nauczyciela
+**Opis**: Panel dla nauczycieli pokazujący projekty oczekujące na weryfikację, zaakceptowane i odrzucone. Umożliwia zatwierdzanie/odrzucanie projektów i dodawanie komentarzy.
+**Rola**: Istotna - centralne miejsce dla nauczycieli.
+
+#### frontend/src/views/AdminDashboardView.vue
+**Cel**: Panel administratora
+**Opis**: Panel dla administratorów z funkcjami zarządzania użytkownikami, kategoriami, raportami i innymi ustawieniami systemu.
+**Rola**: Istotna - centrum zarządzania systemem.
+
+### Store (Pinia)
+
+#### frontend/src/store/modules/auth.js
+**Cel**: Zarządzanie stanem autoryzacji
+**Opis**: Przechowuje informacje o zalogowanym użytkowniku, token JWT, role i uprawnienia. Zawiera akcje do logowania, wylogowania i odświeżania sesji.
+**Rola**: Krytyczna - obsługuje autentykację i autoryzację.
+
+#### frontend/src/store/modules/projects.js
+**Cel**: Zarządzanie stanem projektów
+**Opis**: Przechowuje dane projektów, stany ładowania, błędy i filtry. Zawiera akcje do pobierania, tworzenia, aktualizacji i usuwania projektów.
+**Rola**: Krytyczna - centralne miejsce operacji na projektach.
+
+### Serwisy
+
+#### frontend/src/services/api.js
+**Cel**: Główny serwis API
+**Opis**: Konfiguruje instancję Axios z podstawowymi ustawieniami, interceptorami dla nagłówków autoryzacji i obsługą błędów. Służy jako baza dla innych serwisów API.
+**Rola**: Krytyczna - zapewnia komunikację z backendem.
+
+#### frontend/src/services/authService.js
+**Cel**: Serwis autoryzacji
+**Opis**: Zawiera metody do interakcji z API autoryzacji, w tym logowanie przez MS Teams, odświeżanie tokenów i wylogowywanie.
+**Rola**: Krytyczna - obsługuje autentykację z backendem.
+
+#### frontend/src/services/projectService.js
+**Cel**: Serwis projektów
+**Opis**: Zawiera metody do interakcji z API projektów, w tym pobieranie, tworzenie, aktualizację, usuwanie i zatwierdzanie projektów.
+**Rola**: Krytyczna - obsługuje operacje CRUD na projektach.
+
+## Backend (NestJS)
+
+### Konfiguracja projektu
+
+#### backend/package.json
+**Cel**: Zarządzanie zależnościami projektu backendowego
+**Opis**: Definiuje wszystkie biblioteki i narzędzia potrzebne dla backendu NestJS, w tym NestJS core, Prisma, JWT i inne. Zawiera również skrypty do budowania, uruchamiania i testowania aplikacji.
+**Rola**: Krytyczna - definicja zależności backendu.
+
+#### backend/nest-cli.json
+**Cel**: Konfiguracja NestJS CLI
+**Opis**: Konfiguruje narzędzie wiersza poleceń NestJS, określając strukturę projektu, kompilatora i inne opcje specyficzne dla NestJS.
+**Rola**: Istotna - pomaga w generowaniu i budowaniu komponentów NestJS.
+
+#### backend/tsconfig.json
+**Cel**: Konfiguracja TypeScript dla backendu
+**Opis**: Definiuje opcje kompilatora TypeScript specyficzne dla backendu, w tym ścieżki, opcje kompilacji i mapowanie typów.
+**Rola**: Istotna - zapewnia prawidłową kontrolę typów.
+
+### Główne pliki
+
+#### backend/src/main.ts
+**Cel**: Punkt wejścia aplikacji NestJS
+**Opis**: Inicjalizuje aplikację NestJS, konfiguruje globalne prefiksy, middleware, walidatory i inne ustawienia aplikacji.
+**Rola**: Krytyczna - uruchamia serwer aplikacji.
+
+#### backend/src/app.module.ts
+**Cel**: Główny moduł aplikacji
+**Opis**: Rejestruje wszystkie moduły aplikacji, dostawców globalnych i middleware. Służy jako korzeń drzewa modułów NestJS.
+**Rola**: Krytyczna - organizuje strukturę aplikacji.
+
+### Moduł użytkowników
+
+#### backend/src/modules/users/users.module.ts
+**Cel**: Moduł użytkowników
+**Opis**: Definiuje strukturę modułu użytkowników, importując potrzebne komponenty i eksportując serwisy dla innych modułów.
+**Rola**: Istotna - organizuje funkcjonalność użytkowników.
+
+#### backend/src/modules/users/users.controller.ts
+**Cel**: Kontroler użytkowników
+**Opis**: Definiuje endpointy API dla operacji na użytkownikach, w tym CRUD, filtrowanie i specjalne operacje (np. zmiana roli).
+**Rola**: Istotna - obsługuje żądania HTTP dotyczące użytkowników.
+
+#### backend/src/modules/users/users.service.ts
+**Cel**: Serwis użytkowników
+**Opis**: Zawiera logikę biznesową dla operacji na użytkownikach, w tym interakcje z bazą danych poprzez Prisma, walidację i transformację danych.
+**Rola**: Krytyczna - implementuje operacje na użytkownikach.
+
+#### backend/src/modules/users/dto/create-user.dto.ts
+**Cel**: DTO dla tworzenia użytkownika
+**Opis**: Definiuje strukturę danych dla tworzenia nowego użytkownika, wraz z walidacjami i dekoratorami Swagger.
+**Rola**: Istotna - zapewnia poprawność danych wejściowych.
+
+### Moduł projektów
+
+#### backend/src/modules/projects/projects.module.ts
+**Cel**: Moduł projektów
+**Opis**: Definiuje strukturę modułu projektów, importując potrzebne zależności i eksportując komponenty.
+**Rola**: Istotna - organizuje funkcjonalność projektów.
+
+#### backend/src/modules/projects/projects.controller.ts
+**Cel**: Kontroler projektów
+**Opis**: Definiuje endpointy API dla operacji na projektach, w tym CRUD, wyszukiwanie, filtrowanie i operacje zatwierdzania.
+**Rola**: Istotna - obsługuje żądania HTTP dotyczące projektów.
+
+#### backend/src/modules/projects/projects.service.ts
+**Cel**: Serwis projektów
+**Opis**: Zawiera logikę biznesową dla operacji na projektach, w tym interakcje z bazą danych, walidację i przetwarzanie.
+**Rola**: Krytyczna - implementuje operacje na projektach.
+
+### Autoryzacja
+
+#### backend/src/auth/auth.module.ts
+**Cel**: Moduł autoryzacji
+**Opis**: Organizuje komponenty związane z autentykacją i autoryzacją, w tym strategie JWT i MS Teams.
+**Rola**: Krytyczna - zarządza autoryzacją w systemie.
+
+#### backend/src/auth/ms-teams.strategy.ts
+**Cel**: Strategia autoryzacji MS Teams
+**Opis**: Implementuje strategię Passport.js dla logowania przez Microsoft Teams / Azure AD, używając OAuth2.
+**Rola**: Krytyczna - umożliwia logowanie przez MS Teams.
+
+### Elementy wspólne
+
+#### backend/src/common/guards/jwt-auth.guard.ts
+**Cel**: Guard JWT
+**Opis**: Chroni endpointy wymagające autoryzacji, weryfikując token JWT i pobierając dane użytkownika.
+**Rola**: Krytyczna - zapewnia bezpieczeństwo API.
+
+#### backend/src/common/guards/roles.guard.ts
+**Cel**: Guard ról
+**Opis**: Sprawdza, czy zalogowany użytkownik ma odpowiednie role do dostępu do chronionego endpointu.
+**Rola**: Krytyczna - kontroluje dostęp na podstawie ról.
+
+## Baza danych (PostgreSQL + Prisma)
+
+#### backend/prisma/schema.prisma
+**Cel**: Schemat bazy danych
+**Opis**: Definiuje strukturę bazy danych PostgreSQL, w tym tabele (modele), relacje, indeksy i inne atrybuty, używając języka Prisma Schema.
+**Rola**: Krytyczna - definiuje strukturę danych.
+
+#### backend/prisma/seed.ts
+**Cel**: Skrypt inicjalizacji danych testowych
+**Opis**: Skrypt tworzący początkowe dane w bazie, w tym administratora, przykładowe kategorie i projekty testowe.
+**Rola**: Pomocnicza - ułatwia inicjalizację środowiska developerskiego.
+
+## Docker i infrastruktura
+
+#### docker/docker-compose.yml
+**Cel**: Główny plik konfiguracyjny Docker Compose
+**Opis**: Definiuje wszystkie serwisy wymagane do uruchomienia aplikacji (frontend, backend, baza danych, proxy), ich zależności, porty i wolumeny.
+**Rola**: Krytyczna - zapewnia lokalne i produkcyjne wdrożenie.
+
+#### docker/frontend/Dockerfile
+**Cel**: Definicja obrazu Docker dla frontendu
+**Opis**: Wieloetapowy proces budowania obrazu Docker dla aplikacji Vue.js, obejmujący instalację zależności, budowanie produkcyjne i konfigurację Nginx.
+**Rola**: Istotna - umożliwia konteneryzację frontendu.
+
+#### docker/backend/Dockerfile
+**Cel**: Definicja obrazu Docker dla backendu
+**Opis**: Definicja obrazu Docker dla aplikacji NestJS, obejmująca instalację zależności, budowanie i konfigurację środowiska uruchomieniowego.
+**Rola**: Istotna - umożliwia konteneryzację backendu.
+
+## Dokumentacja
+
+#### docs/README.md
+**Cel**: Główny plik dokumentacji
+**Opis**: Wprowadzenie do dokumentacji projektu, zawierające spis treści, cele projektu i instrukcje nawigacji po dokumentacji.
+**Rola**: Pomocnicza - punkt wejścia do dokumentacji.
+
+#### docs/architecture.md
+**Cel**: Opis architektury systemu
+**Opis**: Szczegółowy opis architektury systemu, w tym diagram komponentów, interakcje i uzasadnienia decyzji architektonicznych.
+**Rola**: Pomocnicza - pomaga zrozumieć strukturę systemu.
+
+#### docs/user-guide/student.md
+**Cel**: Instrukcja dla studentów
+**Opis**: Dokumentacja dla studentów wyjaśniająca, jak korzystać z systemu, w tym tworzenie, edytowanie i wysyłanie projektów do zatwierdzenia.
+**Rola**: Pomocnicza - pomaga użytkownikom końcowym.
+
+## Pliki pomocnicze (nie są bezpośrednio częścią aplikacji)
+
+### Skrypty organizacji plików
+
+#### organize-files.js
+**Cel**: Automatyczne organizowanie plików projektu
+**Opis**: Skrypt Node.js, który analizuje komentarze w plikach i umieszcza je w odpowiedniej strukturze katalogów projektu.
+**Rola**: Pomocnicza - usprawnia organizację kodu.
+
+#### skrypt-organizacji-plikow.sh
+**Cel**: Wersja Bash skryptu organizacji plików
+**Opis**: Skrypt Bash wykonujący te same funkcje co organize-files.js, ale dla systemów Unix/Linux.
+**Rola**: Pomocnicza - usprawnia organizację kodu.
+
+### Dokumentacja pomocnicza
+
+#### instrukcje-skrypty-dla-poczatkujacych.md
+**Cel**: Instrukcje korzystania ze skryptów
+**Opis**: Szczegółowa instrukcja dla początkujących, jak używać skryptów organizacji plików.
+**Rola**: Pomocnicza - ułatwia pracę z projektem.
+
+#### Style Guide i standardy kodowania projektu
+**Cel**: Standardy kodowania dla zespołu
+**Opis**: Dokument definiujący konwencje nazewnictwa, formatowania i inne standardy kodowania dla całego projektu.
+**Rola**: Pomocnicza - zapewnia spójność kodu.

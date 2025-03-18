@@ -1,0 +1,2 @@
+1. Lista referencyjna plików projektu
+Ten dokument zawiera pełny spis wszystkich plików w projekcie pogrupowanych według modułów (frontend, backend, baza danych, Docker, dokumentacja). Możesz go używać jako referencję podczas organizowania plików i tworzenia struktury katalogów.

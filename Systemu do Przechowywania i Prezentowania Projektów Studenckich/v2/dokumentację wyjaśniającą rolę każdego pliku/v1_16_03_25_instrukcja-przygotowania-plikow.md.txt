@@ -1,0 +1,174 @@
+# Instrukcja przygotowania plików do uruchomienia skryptu organizacji
+
+Ta instrukcja pomoże Ci przygotować pliki projektu do uruchomienia skryptu organizacji, który automatycznie umieści je w odpowiedniej strukturze katalogów.
+
+## 1. Jakie pliki umieścić w katalogu pobrane_pliki
+
+### Pliki bezpośrednio związane z budową aplikacji
+
+Poniższe pliki powinny być umieszczone w katalogu `pobrane_pliki` przed uruchomieniem skryptu organizacji:
+
+**Frontend**:
+- Wszystkie pliki z katalogu `frontend/` z listy referencyjnej, w tym:
+  - Pliki konfiguracyjne (package.json, vite.config.js, itp.)
+  - Komponenty Vue (.vue)
+  - Serwisy i utilities (.js/.ts)
+
+**Backend**:
+- Wszystkie pliki z katalogu `backend/` z listy referencyjnej, w tym:
+  - Pliki konfiguracyjne (package.json, nest-cli.json, itp.)
+  - Moduły, kontrolery i serwisy NestJS (.ts)
+  - Definicje DTO i encji (.ts)
+  - Pliki konfiguracyjne Prisma
+
+**Docker**:
+- Wszystkie pliki z katalogu `docker/` z listy referencyjnej, w tym:
+  - docker-compose.yml i jego warianty
+  - Dockerfile dla każdego serwisu
+  - Pliki konfiguracyjne dla nginx, postgres, itp.
+
+**Dokumentacja**:
+- Wszystkie pliki dokumentacji z katalogu `docs/`
+
+### Pliki pomocnicze, które nie są częścią aplikacji
+
+Poniższe pliki nie muszą być umieszczane w katalogu `pobrane_pliki`, gdyż nie są częścią struktury projektu, lecz narzędziami pomocniczymi:
+
+- Skrypty organizacji plików (organize-files.js, skrypt-organizacji-plikow.sh)
+- Instrukcje dla początkujących (instrukcje-skrypty-dla-poczatkujacych.md)
+- Lista referencyjna plików (lista-referencyjna-plikow.md)
+- Style Guide i standardy kodowania
+- Inne pliki dokumentacyjne niezwiązane bezpośrednio z aplikacją
+
+## 2. Przygotowanie plików przed umieszczeniem w pobrane_pliki
+
+Aby skrypt organizacji plików działał poprawnie, każdy plik musi zawierać komentarz ze ścieżką w jednej z pierwszych trzech linii. Poniżej przykłady dla różnych typów plików:
+
+### Pliki JavaScript/TypeScript:
+```javascript
+// frontend/src/services/api.js
+// Reszta kodu...
+```
+
+### Pliki Vue:
+```vue
+<!-- frontend/src/components/projects/ProjectCard.vue -->
+<script setup>
+// Kod komponentu...
+</script>
+```
+
+### Pliki Docker:
+```dockerfile
+# docker/frontend/Dockerfile
+FROM node:16 as build
+# Reszta instrukcji...
+```
+
+### Pliki Markdown:
+```markdown
+<!-- docs/user-guide/student.md -->
+# Instrukcja dla studentów
+```
+
+## 3. Poprawne nazewnictwo plików
+
+Masz dwie opcje nazewnictwa plików:
+
+### Opcja 1: Nazwa pliku zawiera ścieżkę (zalecane)
+Przykłady:
+- `frontend/src/components/projects/ProjectCard.vue`
+- `backend/src/modules/users/users.service.ts`
+
+### Opcja 2: Prosta nazwa pliku + komentarz ze ścieżką
+Przykłady:
+- `ProjectCard.vue` (z komentarzem `<!-- frontend/src/components/projects/ProjectCard.vue -->`)
+- `users.service.ts` (z komentarzem `// backend/src/modules/users/users.service.ts`)
+
+## 4. Kroki przygotowania i uruchomienia
+
+1. **Przygotuj katalogi**:
+   ```bash
+   mkdir pobrane_pliki
+   mkdir projekt-studencki
+   ```
+
+2. **Pobierz wszystkie pliki artefaktów z Claude**:
+   - Pobierz każdy artefakt używając przycisku "Download"
+   - Jeśli artefakt ma już odpowiednią nazwę ze ścieżką, umieść go bezpośrednio w `pobrane_pliki`
+   - Jeśli artefakt ma inną nazwę, zmień jego nazwę lub upewnij się, że ma odpowiedni komentarz z pełną ścieżką
+
+3. **Upewnij się, że każdy plik ma komentarz ze ścieżką**:
+   - Otwórz każdy plik tekstowy i sprawdź, czy w pierwszych trzech liniach znajduje się komentarz ze ścieżką
+   - Jeśli nie, dodaj taki komentarz zgodnie z listą referencyjną
+
+4. **Uruchom skrypt organizacji plików**:
+   Dla Node.js:
+   ```bash
+   node organize-files.js
+   ```
+   
+   Dla Bash:
+   ```bash
+   chmod +x skrypt-organizacji-plikow.sh
+   ./skrypt-organizacji-plikow.sh
+   ```
+
+5. **Sprawdź wyniki**:
+   - Skrypt wyświetli informacje o przeniesionych plikach i ewentualnych problemach
+   - Sprawdź katalog `projekt-studencki`, aby zobaczyć utworzoną strukturę
+   - Jeśli niektóre pliki nie zostały przeniesione, postępuj zgodnie z instrukcjami wyświetlanymi przez skrypt
+
+## 5. Po uruchomieniu skryptu
+
+Po pomyślnym uruchomieniu skryptu, w katalogu `projekt-studencki` powinna powstać pełna struktura projektu zgodna z listą referencyjną. Teraz możesz:
+
+1. **Inicjalizować repozytorium Git**:
+   ```bash
+   cd projekt-studencki
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+2. **Rozpocząć konfigurację środowiska deweloperskiego** zgodnie z instrukcjami w pliku `docs/dev-guide/setup.md`
+
+3. **Uruchomić aplikację lokalnie** używając Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+## Uwagi i rozwiązywanie problemów
+
+- Jeśli skrypt napotkał problemy z niektórymi plikami, sprawdź dokładnie komunikaty błędów
+- Sprawdź, czy wszystkie komentarze ze ścieżkami są poprawne (np. brak literówek, prawidłowe separatory ścieżek)
+- Upewnij się, że używasz poprawnego formatowania komentarzy dla odpowiedniego typu pliku
+- Jeśli plik ma nazwę zawierającą ścieżkę, upewnij się, że ścieżka jest zgodna z listą referencyjną
+
+## Przykład organizacji najpopularniejszych typów plików
+
+Poniżej przedstawiamy przykład poprawnie przygotowanych plików dla różnych typów:
+
+### Pliki Vue:
+```
+pobrane_pliki/
+├── Navbar.vue  # Z komentarzem: <!-- frontend/src/components/layout/Navbar.vue -->
+├── ProjectCard.vue  # Z komentarzem: <!-- frontend/src/components/projects/ProjectCard.vue -->
+├── frontend/src/views/HomeView.vue  # Nazwa zawiera ścieżkę
+```
+
+### Pliki JavaScript/TypeScript:
+```
+pobrane_pliki/
+├── api.js  # Z komentarzem: // frontend/src/services/api.js
+├── authService.js  # Z komentarzem: // frontend/src/services/authService.js
+├── backend/src/modules/users/users.service.ts  # Nazwa zawiera ścieżkę
+```
+
+### Pliki konfiguracyjne:
+```
+pobrane_pliki/
+├── package.json  # Z komentarzem: // frontend/package.json
+├── docker-compose.yml  # Z komentarzem: # docker/docker-compose.yml
+├── backend/nest-cli.json  # Nazwa zawiera ścieżkę
+```

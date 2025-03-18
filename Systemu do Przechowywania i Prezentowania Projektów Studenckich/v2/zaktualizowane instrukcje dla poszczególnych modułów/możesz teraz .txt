@@ -1,0 +1,6 @@
+Możesz teraz:
+
+Rozpocząć tworzenie plików w oddzielnych czatach modułowych
+Przygotować je do automatycznej organizacji zgodnie z instrukcją
+Uruchomić skrypt, aby utworzyć spójną strukturę katalogów
+Przekazać zespołowi dokumentację wyjaśniającą rolę każdego pliku

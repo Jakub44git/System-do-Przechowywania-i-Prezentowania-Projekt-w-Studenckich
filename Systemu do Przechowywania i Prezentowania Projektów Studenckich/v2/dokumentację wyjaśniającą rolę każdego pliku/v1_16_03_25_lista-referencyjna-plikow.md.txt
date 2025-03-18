@@ -1,0 +1,204 @@
+# Lista referencyjna plików projektu
+
+Poniżej znajduje się lista wszystkich plików projektu z ich pełnymi ścieżkami, pogrupowana według modułów. Możesz wykorzystać tę listę jako referencję podczas umieszczania plików w odpowiednich katalogach projektu.
+
+## Frontend (Vue.js + Tailwind CSS)
+
+### Konfiguracja projektu
+- `frontend/package.json` - zależności projektu
+- `frontend/vite.config.js` - konfiguracja Vite
+- `frontend/tailwind.config.js` - konfiguracja Tailwind CSS
+- `frontend/.env` - zmienne środowiskowe
+- `frontend/index.html` - główny plik HTML
+- `frontend/tsconfig.json` - konfiguracja TypeScript (jeśli używasz TS)
+
+### Struktura aplikacji
+- `frontend/src/main.js` - punkt wejścia aplikacji
+- `frontend/src/App.vue` - główny komponent
+- `frontend/src/router/index.js` - konfiguracja routingu
+- `frontend/src/store/index.js` - główny plik Pinia store
+
+### Komponenty
+- `frontend/src/components/layout/Navbar.vue` - górny pasek nawigacyjny
+- `frontend/src/components/layout/Footer.vue` - stopka
+- `frontend/src/components/layout/Sidebar.vue` - menu boczne (jeśli używane)
+
+- `frontend/src/components/common/Button.vue` - komponent przycisku
+- `frontend/src/components/common/Card.vue` - komponent karty
+- `frontend/src/components/common/Alert.vue` - komponent alertu
+- `frontend/src/components/common/Modal.vue` - komponent modalu
+- `frontend/src/components/common/Pagination.vue` - komponent paginacji
+- `frontend/src/components/common/Search.vue` - wyszukiwarka
+
+- `frontend/src/components/projects/ProjectList.vue` - lista projektów
+- `frontend/src/components/projects/ProjectCard.vue` - karta projektu
+- `frontend/src/components/projects/ProjectForm.vue` - formularz projektu
+- `frontend/src/components/projects/ProjectFilter.vue` - filtrowanie projektów
+
+- `frontend/src/components/users/UserCard.vue` - karta użytkownika
+- `frontend/src/components/users/UserList.vue` - lista użytkowników
+- `frontend/src/components/users/LoginForm.vue` - formularz logowania
+
+- `frontend/src/components/admin/AdminSidebar.vue` - menu boczne dla admina
+- `frontend/src/components/admin/UserTable.vue` - tabela użytkowników
+- `frontend/src/components/admin/CategoryManager.vue` - zarządzanie kategoriami
+
+### Widoki (strony)
+- `frontend/src/views/HomeView.vue` - strona główna
+- `frontend/src/views/LoginView.vue` - strona logowania
+- `frontend/src/views/ProjectsView.vue` - lista projektów
+- `frontend/src/views/ProjectDetailsView.vue` - szczegóły projektu
+- `frontend/src/views/UserDashboardView.vue` - panel użytkownika
+- `frontend/src/views/TeacherDashboardView.vue` - panel nauczyciela
+- `frontend/src/views/AdminDashboardView.vue` - panel administratora
+- `frontend/src/views/NotFoundView.vue` - strona 404
+
+### Store (Pinia)
+- `frontend/src/store/modules/auth.js` - store autoryzacji
+- `frontend/src/store/modules/projects.js` - store projektów
+- `frontend/src/store/modules/users.js` - store użytkowników
+- `frontend/src/store/modules/categories.js` - store kategorii
+
+### Serwisy
+- `frontend/src/services/api.js` - główny serwis API
+- `frontend/src/services/authService.js` - serwis autoryzacji
+- `frontend/src/services/projectService.js` - serwis projektów
+- `frontend/src/services/userService.js` - serwis użytkowników
+- `frontend/src/services/categoryService.js` - serwis kategorii
+
+### Pomocnicze
+- `frontend/src/utils/validators.js` - funkcje walidacji
+- `frontend/src/utils/formatters.js` - formatowanie danych
+- `frontend/src/utils/helpers.js` - pomocnicze funkcje
+
+## Backend (NestJS)
+
+### Konfiguracja projektu
+- `backend/package.json` - zależności projektu
+- `backend/nest-cli.json` - konfiguracja NestJS
+- `backend/tsconfig.json` - konfiguracja TypeScript
+- `backend/.env` - zmienne środowiskowe
+
+### Główne pliki
+- `backend/src/main.ts` - punkt wejścia aplikacji
+- `backend/src/app.module.ts` - główny moduł aplikacji
+- `backend/src/app.controller.ts` - główny kontroler
+- `backend/src/app.service.ts` - główny serwis
+
+### Moduł użytkowników
+- `backend/src/modules/users/users.module.ts` - moduł użytkowników
+- `backend/src/modules/users/users.controller.ts` - kontroler użytkowników
+- `backend/src/modules/users/users.service.ts` - serwis użytkowników
+- `backend/src/modules/users/dto/create-user.dto.ts` - DTO dla tworzenia użytkownika
+- `backend/src/modules/users/dto/update-user.dto.ts` - DTO dla aktualizacji użytkownika
+- `backend/src/modules/users/entities/user.entity.ts` - encja użytkownika
+
+### Moduł projektów
+- `backend/src/modules/projects/projects.module.ts` - moduł projektów
+- `backend/src/modules/projects/projects.controller.ts` - kontroler projektów
+- `backend/src/modules/projects/projects.service.ts` - serwis projektów
+- `backend/src/modules/projects/dto/create-project.dto.ts` - DTO dla tworzenia projektu
+- `backend/src/modules/projects/dto/update-project.dto.ts` - DTO dla aktualizacji projektu
+- `backend/src/modules/projects/entities/project.entity.ts` - encja projektu
+
+### Moduł kategorii
+- `backend/src/modules/categories/categories.module.ts` - moduł kategorii
+- `backend/src/modules/categories/categories.controller.ts` - kontroler kategorii
+- `backend/src/modules/categories/categories.service.ts` - serwis kategorii
+- `backend/src/modules/categories/dto/create-category.dto.ts` - DTO dla tworzenia kategorii
+- `backend/src/modules/categories/dto/update-category.dto.ts` - DTO dla aktualizacji kategorii
+- `backend/src/modules/categories/entities/category.entity.ts` - encja kategorii
+
+### Moduł raportów
+- `backend/src/modules/reports/reports.module.ts` - moduł raportów
+- `backend/src/modules/reports/reports.controller.ts` - kontroler raportów
+- `backend/src/modules/reports/reports.service.ts` - serwis raportów
+- `backend/src/modules/reports/dto/create-report.dto.ts` - DTO dla tworzenia raportu
+- `backend/src/modules/reports/entities/report.entity.ts` - encja raportu
+
+### Konfiguracja Prisma
+- `backend/prisma/schema.prisma` - schemat bazy danych
+- `backend/src/prisma/prisma.module.ts` - moduł Prisma
+- `backend/src/prisma/prisma.service.ts` - serwis Prisma
+
+### Autoryzacja
+- `backend/src/auth/auth.module.ts` - moduł autoryzacji
+- `backend/src/auth/auth.controller.ts` - kontroler autoryzacji
+- `backend/src/auth/auth.service.ts` - serwis autoryzacji
+- `backend/src/auth/ms-teams.strategy.ts` - strategia MS Teams
+
+### Elementy wspólne
+- `backend/src/common/guards/jwt-auth.guard.ts` - guard JWT
+- `backend/src/common/guards/roles.guard.ts` - guard ról
+- `backend/src/common/decorators/roles.decorator.ts` - dekorator ról
+- `backend/src/common/filters/http-exception.filter.ts` - filtr wyjątków HTTP
+- `backend/src/common/interceptors/transform.interceptor.ts` - interceptor transformacji
+- `backend/src/common/dto/pagination.dto.ts` - DTO paginacji
+
+## Baza danych (PostgreSQL + Prisma)
+
+### Schemat i migracje
+- `backend/prisma/schema.prisma` - schemat bazy danych
+- `backend/prisma/migrations/migration_script.sql` - przykładowy skrypt migracji
+
+### Inicjalizacja danych
+- `backend/prisma/seed.ts` - skrypt inicjalizacji danych testowych
+- `docker/database/init.sql` - skrypt inicjalizacyjny dla PostgreSQL
+
+## Docker i infrastruktura
+
+### Konfiguracja główna
+- `docker/docker-compose.yml` - główny plik compose
+- `docker/docker-compose.dev.yml` - konfiguracja dla środowiska deweloperskiego
+- `docker/docker-compose.prod.yml` - konfiguracja dla środowiska produkcyjnego
+- `docker/.env` - zmienne środowiskowe dla Docker
+
+### Frontend
+- `docker/frontend/Dockerfile` - obraz dla aplikacji Vue.js
+- `docker/frontend/nginx.conf` - konfiguracja Nginx dla frontendu
+
+### Backend
+- `docker/backend/Dockerfile` - obraz dla aplikacji NestJS
+
+### Baza danych
+- `docker/database/Dockerfile` - obraz dla PostgreSQL
+- `docker/database/init.sql` - skrypt inicjalizacyjny
+
+### Reverse proxy
+- `docker/nginx/Dockerfile` - obraz dla reverse proxy
+- `docker/nginx/nginx.conf` - konfiguracja Nginx jako proxy
+- `docker/nginx/ssl/ssl-setup.md` - instrukcja konfiguracji SSL
+
+### Skrypty pomocnicze
+- `docker/scripts/backup.sh` - skrypt do tworzenia kopii zapasowych
+- `docker/scripts/deploy.sh` - skrypt wdrożeniowy
+- `docker/scripts/setup-dev.sh` - skrypt konfiguracji środowiska deweloperskiego
+
+## Dokumentacja
+
+### Główna dokumentacja
+- `docs/README.md` - główny plik dokumentacji
+- `docs/architecture.md` - opis architektury systemu
+- `docs/project-structure.md` - struktura projektu
+
+### Dokumentacja API
+- `docs/api/README.md` - wprowadzenie do API
+- `docs/api/users.md` - dokumentacja API użytkowników
+- `docs/api/projects.md` - dokumentacja API projektów
+- `docs/api/categories.md` - dokumentacja API kategorii
+
+### Instrukcje dla użytkowników
+- `docs/user-guide/README.md` - wprowadzenie dla użytkowników
+- `docs/user-guide/student.md` - instrukcja dla studentów
+- `docs/user-guide/teacher.md` - instrukcja dla nauczycieli
+- `docs/user-guide/admin.md` - instrukcja dla administratorów
+
+### Instrukcje dla developerów
+- `docs/dev-guide/setup.md` - konfiguracja środowiska
+- `docs/dev-guide/coding-standards.md` - standardy kodowania
+- `docs/dev-guide/git-workflow.md` - workflow Git
+
+### Instrukcje wdrożenia
+- `docs/deployment/local.md` - wdrożenie lokalne
+- `docs/deployment/production.md` - wdrożenie produkcyjne
+- `docs/deployment/ssl-setup.md` - konfiguracja SSL
