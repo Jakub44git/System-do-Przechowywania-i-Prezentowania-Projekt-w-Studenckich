@@ -1,8 +1,0 @@
-2. Szczegółowy opis plików projektu
-Ten dokument zawiera dokładne opisy każdego pliku, w tym:
-
-Cel: Krótkie wyjaśnienie, do czego służy plik
-Opis: Szczegółowe wyjaśnienie zawartości i funkcji
-Rola: Określenie wagi pliku (krytyczna, istotna, pomocnicza)
-
-Dokument jest idealny do zrozumienia znaczenia poszczególnych plików i ich miejsca w projekcie. Możesz go używać podczas komunikacji z zespołem, aby wszyscy rozumieli rolę konkretnych komponentów.
